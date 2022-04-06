@@ -1,7 +1,6 @@
 from typing import List
 
-
-
+from app.database.schemas.nlu_model_registry_schema import NLURegistrySchema
 
 
 class PipelineStep:
@@ -31,10 +30,12 @@ class NLUModel:
     def __init__(self,
                  embeddings: NLUEmbeddings,
                  preprocessing_pipeline: NLUPreprocessingPipeline,
-                 intents: List[str]):
+                 intents: List[str],
+                 data: NLURegistrySchema):
         self.embeddings = embeddings
         self.pipeline = preprocessing_pipeline
         self.intents = intents
+        self.data = data
 
     def train(self):
         pass

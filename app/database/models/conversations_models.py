@@ -11,11 +11,10 @@ from sqlalchemy.types import Text
 class ConversationMessage(UUIDMixin, Base):
     __tablename__ = 'messages'
 
-    conversation_id = Column(String, ForeignKey('conversations.id'), index=True)
+    conversation_id = Column(String(36), ForeignKey('conversations.id'), index=True)
     text = Column(Text, nullable=False)
     posted_at = Column(DateTime, nullable=False, default=datetime.utcnow)
     from_agent = Column(Boolean, nullable=False, default=False)
-    intent_id = Column(String, ForeignKey('intent.id'), nullable=True)
 
 
 class Conversation(UUIDMixin, Base):

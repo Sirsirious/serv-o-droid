@@ -14,14 +14,13 @@ class ConversationMessageCreate(ConversationMessageBase):
 
 
 class ConversationMessageUpdate(ConversationMessageBase):
-    intent_id: str
+    pass
 
 
 class ConversationMessage(ConversationMessageBase):
     id: str
     conversation_id: str
     posted_at: Optional[datetime]
-    intent_id: Optional[str]
 
     class Config:
         orm_mode = True
