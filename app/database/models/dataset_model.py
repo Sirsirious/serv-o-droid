@@ -23,9 +23,6 @@ class DatasetEntry(Base):
     message_id = Column(String(36), ForeignKey('messages.id'),
                         nullable=False, index=True, primary_key=True)
     intent_id = Column(String(36), ForeignKey('intents.id'), nullable=True)
-    dataset = relationship('datasets', backref='dataset_entries')
-    messages = relationship('messages', backref='dataset_entries')
-    intents = relationship('intents', backref='dataset_entries')
     created_at = Column(DateTime, default=datetime.utcnow)
     updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
 
