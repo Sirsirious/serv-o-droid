@@ -30,7 +30,5 @@ class IntentMap(Base):
                        nullable=False, index=True, primary_key=True)
     intent_set_id = Column(String(36), ForeignKey('intent_set.id'),
                            nullable=False, index=True, primary_key=True)
-    intent_set = relationship('intent_set', backref='intent_map')
-    intent = relationship('intents', backref='intent_map')
     created_at = Column(DateTime, default=datetime.utcnow)
     updated_at = Column(DateTime, default=datetime.utcnow)

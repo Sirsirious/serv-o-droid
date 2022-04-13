@@ -38,7 +38,6 @@ class TrainingResult(Base, UUIDMixin):
     finished_at = Column(DateTime, nullable=True, default=datetime.utcnow)
     parameters = Column(JSON, nullable=False)
     results = Column(JSON, nullable=True)
-    dataset = relationship('datasets', backref='dataset_entries')
 
     def __repr__(self):
         return '<TrainingResults %r>' % self.id

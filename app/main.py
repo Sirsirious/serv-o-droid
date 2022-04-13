@@ -6,6 +6,7 @@ from pathlib import Path
 from fastapi import FastAPI
 
 from app.database.database import Base, SessionLocal, engine
+from fastapi.middleware.cors import CORSMiddleware
 from app.endpoints import (
     conversations_router,
     intents_router,
@@ -54,6 +55,19 @@ logging.basicConfig(filename=logs_target.joinpath("servodroid.log"), level=loggi
 logger.info("Starting Servo-droid")
 logger.info("Loading routes")
 app = FastAPI()
+
+origins = [
+    "http://localhost:3000",
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 app.include_router(conversations_router.router)
 app.include_router(intents_router.router)
 app.include_router(datasets_router.router)
